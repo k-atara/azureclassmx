@@ -12,7 +12,7 @@
         <nav class="navegacion">
             <ul class="menu">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="curriculum.html">Curriculum</a></li>
+                <li><a href="me.html">Sobre mi</a></li>
                 <li><a href="#">Programación</a>
                     <ul class="submenu">
                         <li><a href="web.html">App Web</a></li>
@@ -27,5 +27,63 @@
     </header>
 
     <!-- Contenido -->
+    <script type="module">
+        import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+    
+        let renderer, scene, camera, mesh;
+    
+        function init(){
+            
+            //const scene = new THREE.Scene();
+            //RENDERER
+            renderer = new THREE.WebGLRenderer({antialias: true});
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor("pink");
+            document.body.appendChild(renderer.domElement);
+    
+            //SCENE
+            scene = new THREE.Scene();
+    
+            //CAMERA
+            let fov = 60;
+            let aspect = window.innerWidth / window.innerHeight;
+            let near = 0.1;
+            let far = 10000;
+            camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+            camera.position.set(0, 0, 3);
+    
+            //MODELS
+            //let geometry = new THREE.SphereGeometry();
+            //let geometry = new THREE.BoxGeometry();
+            let radius = 0.7;
+            let detail = 1;
+            let geometry = new THREE.DodecahedronGeometry(radius, detail);
+            let material = new THREE.MeshBasicMaterial({color: new THREE.Color(0.2, 0.2, 0.35), wireframe: true});
+            mesh = new THREE.Mesh(geometry, material);
+    
+            //SCENE HIERARCHY
+            scene.add(mesh);
+    
+            renderLoop();
+        }
+    
+        function renderLoop(){
+            console.log("frame");
+            //DRAW SCENE
+            renderer.render(scene, camera);
+    
+            updateScene();
+    
+            requestAnimationFrame(renderLoop);
+        }
+    
+        function updateScene(){
+            mesh.rotation.y = mesh.rotation.y + 5 *Math.PI / 180;
+        }
+        
+        //EVENT LISTENERS && HANDLERS (visualización, mov)
+        document.addEventListener("DOMContentLoaded", init)
+    
+      </script>
 </body>
 </html>
