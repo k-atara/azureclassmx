@@ -66,4 +66,17 @@ body{
 
 main {
     background: #ffffff;
+    padding: 10px 10px;
+   
+}
+
+main li {
+    border: 1px solid #666;
+    padding: 3px 10px;
+    margin: 15px 20px;
+    display: inline-block;
+}
+
+h1 {
+    color: #803945;
 }
