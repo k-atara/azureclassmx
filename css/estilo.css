@@ -9,8 +9,7 @@
 }
 
 body{
-    background: rgb(162, 187, 233);
-    
+    background: #FFC0CB;
 }
 
 .navegacion{
@@ -63,4 +62,8 @@ body{
 .menu li:hover .submenu{
     visibility: visible;
     opacity: 1;
+}
+
+main {
+    background: #ffffff;
 }
